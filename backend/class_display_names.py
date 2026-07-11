@@ -1,0 +1,31 @@
+DISPLAY_NAMES = {
+    "Apple_Apple_scab": "Apple — Scab",
+    "Apple__Apple__rot": "Apple — Rot",
+    "Apple___Cedar_apple_rust": "Apple — Cedar Apple Rust",
+    "Apple__healthy": "Apple — Healthy",
+    "Blueberry_healthy": "Blueberry — Healthy",
+    "Cherry_healthy": "Cherry — Healthy",
+    "Cherry_including_sour__Powdery_mildew": "Cherry — Powdery Mildew",
+    "Corn_maize_Northern_Leaf_Blight": "Corn (Maize) — Northern Leaf Blight",
+    "Grape___Leaf_blight_Isariopsis_Leaf_Spot": "Grape — Leaf Blight (Isariopsis)",
+    "Grape___healthy": "Grape — Healthy",
+    "Orange_Haunglongbing_Citrus_greening": "Orange — Citrus Greening (HLB)",
+    "Peach___Bacterial_spot": "Peach — Bacterial Spot",
+    "Peach___healthy": "Peach — Healthy",
+    "Pepper_bell___Bacterial_spot": "Bell Pepper — Bacterial Spot",
+    "Potato___Early_blight": "Potato — Early Blight",
+    "Potato___healthy": "Potato — Healthy",
+    "Rasberry_healthy": "Raspberry — Healthy",
+    "Soybean___healthy": "Soybean — Healthy",
+    "Squash___Powdery_mildew": "Squash — Powdery Mildew",
+    "Tomato_Bacterial_spot": "Tomato — Bacterial Spot",
+    "Tomato_Late_blight": "Tomato — Late Blight",
+    "Tomato_Septoria_leaf_spot": "Tomato — Septoria Leaf Spot",
+    "Tomato_healthy": "Tomato — Healthy",
+    "corn _maize_common_rust": "Corn (Maize) — Common Rust",
+    "grape___Esca_Black_Measles": "Grape — Esca (Black Measles)",
+    "pepper_bell__health": "Bell Pepper — Healthy",
+}
+
+def get_display_name(raw_class: str) -> str:
+    return DISPLAY_NAMES.get(raw_class, raw_class)

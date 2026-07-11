@@ -1,0 +1,314 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0"
+    />
+    <title>LeafGuardAI - AI Plant Disease Detector</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <nav class="navbar glass">
+      <div class="navbar-row">
+        <div class="brand">🌿 <span data-i18n="appName">LeafGuardAI</span></div>
+
+        <div class="nav-links-desktop" id="navLinksDesktop">
+          <button class="tab-btn active" data-tab="home" data-i18n="navHome">
+            Detect
+          </button>
+          <button class="tab-btn" data-tab="diseases" data-i18n="navDiseases">
+            Diseases
+          </button>
+          <button class="tab-btn" data-tab="history" data-i18n="navHistory">
+            History
+          </button>
+          <button class="tab-btn" data-tab="about" data-i18n="navAbout">
+            About
+          </button>
+        </div>
+
+        <div class="nav-controls">
+          <select id="langSelect">
+            <option value="en">English</option>
+            <option value="bn">বাংলা</option>
+            <option value="hi">हिन्दी</option>
+          </select>
+          <button id="themeToggle" class="theme-toggle glass">🌙</button>
+          <button id="hamburgerBtn" class="hamburger" aria-label="Menu">
+            <span></span><span></span><span></span>
+          </button>
+        </div>
+      </div>
+
+      <div class="mobile-menu" id="mobileMenu">
+        <button class="tab-btn active" data-tab="home" data-i18n="navHome">
+          Detect
+        </button>
+        <button class="tab-btn" data-tab="diseases" data-i18n="navDiseases">
+          Diseases
+        </button>
+        <button class="tab-btn" data-tab="history" data-i18n="navHistory">
+          History
+        </button>
+        <button class="tab-btn" data-tab="about" data-i18n="navAbout">
+          About
+        </button>
+      </div>
+    </nav>
+
+    <div class="container">
+      <!-- HOME / DETECT -->
+      <section id="tab-home" class="tab-section active">
+        <!-- HERO -->
+        <div class="hero">
+          <h1 data-i18n="heroTitle">AI-Powered Plant Disease Detection</h1>
+          <p data-i18n="heroSubtitle">
+            Upload or snap a photo of a leaf — get an instant diagnosis powered
+            by deep learning.
+          </p>
+          <div class="hero-stats">
+            <div class="hero-stat glass">
+              <div class="hero-stat-value">99.85%</div>
+              <div class="hero-stat-label" data-i18n="statAccuracyLabel">
+                Model Accuracy
+              </div>
+            </div>
+            <div class="hero-stat glass">
+              <div class="hero-stat-value">26</div>
+              <div class="hero-stat-label" data-i18n="statClassesLabel">
+                Disease Classes
+              </div>
+            </div>
+            <div class="hero-stat glass">
+              <div class="hero-stat-value">13</div>
+              <div class="hero-stat-label" data-i18n="statCropsLabel">
+                Crop Species
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- UPLOAD -->
+        <div class="upload-box glass" id="uploadBox">
+          <input type="file" id="fileInput" accept="image/*" hidden />
+          <input
+            type="file"
+            id="cameraInput"
+            accept="image/*"
+            capture="environment"
+            hidden
+          />
+          <div class="upload-icon">📷</div>
+          <p data-i18n="uploadTitle">Click or drag a leaf image here</p>
+          <div class="upload-btn-row">
+            <button class="primary-btn" id="uploadBtn" data-i18n="uploadBtn">
+              Choose Image
+            </button>
+            <button class="secondary-btn" id="cameraBtn" data-i18n="cameraBtn">
+              📸 Use Camera
+            </button>
+          </div>
+        </div>
+
+        <div
+          class="preview-section glass"
+          id="previewSection"
+          style="display: none"
+        >
+          <img id="previewImg" alt="Preview" />
+          <div class="upload-btn-row">
+            <button class="primary-btn" id="analyzeBtn" data-i18n="analyzeBtn">
+              Analyze Leaf
+            </button>
+            <button class="secondary-btn" id="retakeBtn" data-i18n="retakeBtn">
+              Retake
+            </button>
+          </div>
+        </div>
+
+        <div class="result-section" id="resultSection"></div>
+
+        <!-- HOW TO USE -->
+        <div class="info-card glass">
+          <h2 data-i18n="howToUseTitle">How to Use</h2>
+          <div class="steps-grid">
+            <div class="step-item">
+              <div class="step-num">1</div>
+              <h4 data-i18n="step1Title">Upload or Capture</h4>
+              <p data-i18n="step1Desc"></p>
+            </div>
+            <div class="step-item">
+              <div class="step-num">2</div>
+              <h4 data-i18n="step2Title">AI Analyzes</h4>
+              <p data-i18n="step2Desc"></p>
+            </div>
+            <div class="step-item">
+              <div class="step-num">3</div>
+              <h4 data-i18n="step3Title">Get Results</h4>
+              <p data-i18n="step3Desc"></p>
+            </div>
+          </div>
+        </div>
+
+        <!-- WHY CHOOSE US -->
+        <div class="info-card glass">
+          <h2 data-i18n="whyTitle">Why LeafGuardAI</h2>
+          <div class="feature-grid">
+            <div class="feature-item">
+              <div class="feature-icon">⚡</div>
+              <h4 data-i18n="feature1Title">Instant Results</h4>
+              <p data-i18n="feature1Desc"></p>
+            </div>
+            <div class="feature-item">
+              <div class="feature-icon">🌍</div>
+              <h4 data-i18n="feature2Title">Multilingual</h4>
+              <p data-i18n="feature2Desc"></p>
+            </div>
+            <div class="feature-item">
+              <div class="feature-icon">🔒</div>
+              <h4 data-i18n="feature3Title">Private by Design</h4>
+              <p data-i18n="feature3Desc"></p>
+            </div>
+            <div class="feature-item">
+              <div class="feature-icon">🎯</div>
+              <h4 data-i18n="feature4Title">Honest Confidence</h4>
+              <p data-i18n="feature4Desc"></p>
+            </div>
+          </div>
+        </div>
+
+        <!-- SUPPORTED CROPS PREVIEW -->
+        <div class="info-card glass">
+          <h2 data-i18n="cropsPreviewTitle">Supported Crops</h2>
+          <div class="crop-chip-row">
+            <span class="crop-chip">🍎 Apple</span>
+            <span class="crop-chip">🍅 Tomato</span>
+            <span class="crop-chip">🍇 Grape</span>
+            <span class="crop-chip">🌽 Corn</span>
+            <span class="crop-chip">🥔 Potato</span>
+            <span class="crop-chip">🍑 Peach</span>
+            <span class="crop-chip">🍊 Orange</span>
+            <span class="crop-chip">+ 6 more</span>
+          </div>
+          <button
+            class="secondary-btn"
+            id="viewAllCropsBtn"
+            data-i18n="viewAllBtn"
+            style="margin-top: 14px"
+          >
+            View All Diseases
+          </button>
+        </div>
+
+        <!-- FAQ -->
+        <div class="info-card glass">
+          <h2 data-i18n="faqTitle">Frequently Asked Questions</h2>
+          <div class="faq-list" id="faqList">
+            <div class="faq-item">
+              <button class="faq-question" type="button">
+                <span data-i18n="faq1Q">How accurate is this tool?</span
+                ><span class="faq-icon">+</span>
+              </button>
+              <div class="faq-answer"><p data-i18n="faq1A"></p></div>
+            </div>
+            <div class="faq-item">
+              <button class="faq-question" type="button">
+                <span data-i18n="faq2Q">What if my photo isn't a leaf?</span
+                ><span class="faq-icon">+</span>
+              </button>
+              <div class="faq-answer"><p data-i18n="faq2A"></p></div>
+            </div>
+            <div class="faq-item">
+              <button class="faq-question" type="button">
+                <span data-i18n="faq3Q">Can it detect any plant disease?</span
+                ><span class="faq-icon">+</span>
+              </button>
+              <div class="faq-answer"><p data-i18n="faq3A"></p></div>
+            </div>
+            <div class="faq-item">
+              <button class="faq-question" type="button">
+                <span data-i18n="faq4Q">Is my data saved anywhere?</span
+                ><span class="faq-icon">+</span>
+              </button>
+              <div class="faq-answer"><p data-i18n="faq4A"></p></div>
+            </div>
+            <div class="faq-item">
+              <button class="faq-question" type="button">
+                <span data-i18n="faq5Q"
+                  >Does the camera button work on all phones?</span
+                ><span class="faq-icon">+</span>
+              </button>
+              <div class="faq-answer"><p data-i18n="faq5A"></p></div>
+            </div>
+          </div>
+        </div>
+
+        <footer class="footer">
+          <p data-i18n="footerText">
+            Built with EfficientNet-B0 &amp; YOLOv8n · A project in machine
+            learning and web development
+          </p>
+        </footer>
+      </section>
+
+      <!-- DISEASES -->
+      <section id="tab-diseases" class="tab-section">
+        <div class="disease-card glass">
+          <h2 data-i18n="diseasesTitle">Diseases We Can Detect</h2>
+          <p
+            data-i18n="diseasesSubtitle"
+            style="color: var(--text-muted); margin-bottom: 16px"
+          ></p>
+          <div class="disease-grid" id="diseaseGrid"></div>
+        </div>
+      </section>
+
+      <!-- HISTORY -->
+      <section id="tab-history" class="tab-section">
+        <div class="history-card glass">
+          <h2 data-i18n="historyTitle">Scan History</h2>
+          <div id="historyList" style="margin-top: 16px"></div>
+        </div>
+      </section>
+
+      <!-- ABOUT -->
+      <section id="tab-about" class="tab-section">
+        <div class="about-card glass">
+          <h2 data-i18n="aboutTitle">About LeafGuardAI</h2>
+          <h3 data-i18n="aboutModelSection" style="margin-top: 20px">
+            Model Performance
+          </h3>
+          <div class="stat-grid" id="statGridModel"></div>
+          <h3 data-i18n="aboutDetectorSection" style="margin-top: 20px">
+            Leaf Detector (YOLOv8n)
+          </h3>
+          <div class="stat-grid" id="statGridDetector"></div>
+          <h3 data-i18n="aboutHowItWorks" style="margin-top: 20px">
+            How It Works
+          </h3>
+          <p
+            data-i18n="aboutHowItWorksText"
+            style="color: var(--text-muted); margin-top: 8px"
+          ></p>
+          <h3
+            data-i18n="aboutLimitationsSection"
+            style="margin-top: 20px; color: var(--warning)"
+          >
+            Known Limitations
+          </h3>
+          <ul
+            class="limitations-list"
+            id="limitationsList"
+            style="margin-top: 8px"
+          ></ul>
+        </div>
+      </section>
+    </div>
+
+    <div class="toast" id="toast"></div>
+
+    <script src="app.js"></script>
+  </body>
+</html>
