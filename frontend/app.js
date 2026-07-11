@@ -325,11 +325,12 @@ function setLanguage(lang) {
 }
 
 // ==================== CONFIG ====================
-const API_URL = ["localhost", "127.0.0.1", ""].includes(
+const RAW_API_URL = ["localhost", "127.0.0.1", ""].includes(
   window.location.hostname,
 )
   ? "http://localhost:8000"
-  : "https://leafguardai-v4.onrender.com/"; // <-- replace after backend deploy
+  : "https://leafguardai-v4.onrender.com";
+const API_URL = RAW_API_URL.replace(/\/+$/, "");
 
 // ==================== STATE ====================
 let selectedFile = null;
