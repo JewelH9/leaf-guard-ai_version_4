@@ -11,7 +11,7 @@ app = FastAPI(title="LeafGuardAI v2 API")
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["https://leafguardai-frontend.onrender.com/"],  # tighten this to your actual frontend domain once deployed
+    allow_origins=["https://leafguardai-frontend.onrender.com"],  
     allow_methods=["*"],
     allow_headers=["*"],
 )
