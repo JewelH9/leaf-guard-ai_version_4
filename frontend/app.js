@@ -329,7 +329,7 @@ const API_URL = ["localhost", "127.0.0.1", ""].includes(
   window.location.hostname,
 )
   ? "http://localhost:8000"
-  : "https://YOUR-BACKEND-NAME.onrender.com"; // <-- replace after backend deploy
+  : "https://leafguardai-v4.onrender.com/"; // <-- replace after backend deploy
 
 // ==================== STATE ====================
 let selectedFile = null;
